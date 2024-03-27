@@ -1,12 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import CarouselCard from './CarouselCard'
-import { dataCities } from './dataCities'
+import { getCities } from '../services/citiesQueries';
 
 function CarouselContainer() {
     const [countSlide, setCountSlide] = useState(0);
     const [start, setStart] = useState(0);
     const [end, setEnd] = useState(4);
-    const [cities, setCities] = useState(dataCities.slice(start, end));
+
+    const [dataCities, setDataCities] = useState([]);
+    const [cities, setCities] = useState([]);
+
+    useEffect(() => {
+        getCities()
+            .then((r) => {
+                setDataCities(r.data.data);
+                setCities(r.data.data.slice(start, end));
+            });
+    }, []);
 
     const next = () => {
         if (countSlide > 1) {
@@ -31,18 +41,22 @@ function CarouselContainer() {
         setEnd(end - 4 === 4 ? 12 : end - 4);
         setCities(dataCities.slice(start, end));
     }
+    
 
+    const carouselCards = cities.map( (city) => (
+        <CarouselCard key={city._id} citie={city} />
+    ));
     return (
         <>
             <div className='flex items-center p-3 my-10'>
-                <button onClick={prev}>
+            <button onClick={prev}>
                     <i className="fa-solid fa-chevron-left text-4xl"></i>
                 </button>
 
-                <CarouselCard citie={cities[0]}></CarouselCard>
-                <CarouselCard citie={cities[1]}></CarouselCard>
-                <CarouselCard citie={cities[2]}></CarouselCard>
-                <CarouselCard citie={cities[3]}></CarouselCard>
+                {
+                    cities.length>0 && carouselCards
+                }
+        
 
                 <button onClick={next}>
                     <i className="fa-solid fa-chevron-right text-4xl"></i>

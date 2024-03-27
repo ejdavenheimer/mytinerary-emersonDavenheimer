@@ -5,6 +5,7 @@ export const getCities = async () =>{
         const response = await axios("http://localhost:4000/api/cities")
         return response
     } catch (error) {
+        console.log(error)
         return []
     }
 }

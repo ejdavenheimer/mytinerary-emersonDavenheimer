@@ -4,6 +4,7 @@ import Hero from '../components/Hero'
 import CarouselContainer from '../components/CarouselContainer'
 import Footer from '../components/Footer'
 
+
 function Home() {
     return (
         <>

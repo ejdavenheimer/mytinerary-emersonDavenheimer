@@ -13,7 +13,7 @@ export default {
         'StrongCyan': '#00c5a6',
       },
       backgroundImage: {
-        'hero-pattern': "url('./public/bghero.jpg')",
+        'hero-pattern': "url('./bghero.jpg')",
       }
     },
   },
