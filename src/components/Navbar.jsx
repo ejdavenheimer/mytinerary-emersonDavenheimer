@@ -12,7 +12,12 @@ function Navbar() {
                 <div className='absolute left-[45%] font-bold text-xl'>
                     <h1>MyItinerary</h1>
                 </div>
-                <span className='menu'><i className="fa-solid fa-user"></i></span>
+                <div>
+                <Link to="/register"  className='text-white'><span className='menu'><i className="fa-solid fa-user"></i>Register</span></Link>
+                <Link to="/login"><span className='menu'><i className="fa-solid fa-user"></i>Login</span></Link>
+                </div>
+                
+                
             </div>
             
         </>
