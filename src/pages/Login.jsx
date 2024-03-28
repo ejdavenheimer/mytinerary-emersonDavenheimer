@@ -24,7 +24,6 @@ function Login() {
             if (!aux[key]) delete aux[key];
         }
         authQueries.login(aux).then((response) => {
-            console.log(response);
             if (response.status == 200) {
                 navigate("/");
             }
